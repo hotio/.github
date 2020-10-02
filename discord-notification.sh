@@ -24,7 +24,7 @@ else
 fi
 
 if [[ ! -f "screenshot.png" ]]; then
-    curl -fsSL https://raw.githubusercontent.com/hotio/unraid-templates/master/backdrop.png > screenshot.png
+    curl -fsSL https://raw.githubusercontent.com/docker-hotio/.github/master/backdrop.png > screenshot.png
 fi
 
 json='
