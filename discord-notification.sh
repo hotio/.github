@@ -55,7 +55,7 @@ json='
         },
         {
           "name": "Documentation",
-          "value": "[hotio.dev](http://hotio.dev/containers/'${GITHUB_REPOSITORY//${GITHUB_OWNER}\/docker-/}')",
+          "value": "[hotio.dev](http://hotio.dev/containers/'${GITHUB_REPOSITORY//${GITHUB_OWNER}\/docker-/}')"
         }
       ],
       "footer": {
