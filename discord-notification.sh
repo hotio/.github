@@ -52,12 +52,16 @@ json='
           "name": "App Version",
           "value": "'${APP_VERSION}'",
           "inline": true
+        },
+        {
+          "name": "Documentation",
+          "value": "[hotio.dev](http://hotio.dev/containers/'${GITHUB_REPOSITORY//${GITHUB_OWNER}\/docker-/}')",
         }
       ],
       "footer": {
         "text": "Powered by GitHub Actions"
       },
-      "timestamp": "'$(date -u --iso-8601=seconds)'",
+      "timestamp": "'$(date -u +'%FT%T.%3NZ')'",
       "image": {
         "url": "attachment://screenshot.png"
       }
