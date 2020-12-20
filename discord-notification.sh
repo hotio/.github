@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ACTION_LINK="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-TITLE="Build #${GITHUB_RUN_NUMBER} [${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}]"
+TITLE="${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}"
 COMMIT_MESSAGE="$(curl -u "${GITHUB_OWNER}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}" | jq -r .commit.message | head -1)"
 COMMIT_LINK="https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
 
@@ -11,7 +11,7 @@ else
     COLOR="15158332"
     json='
     {
-      "content": "<@&646967411798573078> Build **[#'${GITHUB_RUN_NUMBER}' ['${GITHUB_REPOSITORY}']](<'${ACTION_LINK}'>)** failed!"
+      "content": "<@&646967411798573078> Build failed!"
     }
     '
     curl -fsSL -X POST -H "Content-Type: application/json" -d "${json}" "${DISCORD_WEBHOOK}"
