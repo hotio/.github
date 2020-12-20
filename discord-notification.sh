@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ACTION_LINK="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-TITLE="Build #${GITHUB_RUN_NUMBER} [${GITHUB_REPOSITORY}]"
+TITLE="Build #${GITHUB_RUN_NUMBER} [${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}]"
 COMMIT_MESSAGE="$(curl -u "${GITHUB_OWNER}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}" | jq -r .commit.message | head -1)"
 COMMIT_LINK="https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
 
@@ -36,10 +36,6 @@ json='
       "color": '${COLOR}',
       "fields": [
         {
-          "name": "Docker Image",
-          "value": "```'${GITHUB_REPOSITORY//docker-/}:${GITHUB_REF//refs\/heads\//}'```"
-        },
-        {
           "name": "Commit Message",
           "value": "```'${COMMIT_MESSAGE//\"/\\\"}'```"
         },
@@ -52,10 +48,6 @@ json='
           "name": "App Version",
           "value": "'${APP_VERSION}'",
           "inline": true
-        },
-        {
-          "name": "Documentation",
-          "value": "[hotio.dev](https://hotio.dev/containers/'${GITHUB_REPOSITORY//${GITHUB_OWNER}\/docker-/}')"
         }
       ],
       "footer": {
