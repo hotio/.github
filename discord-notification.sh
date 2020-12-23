@@ -45,7 +45,7 @@ json='
           "inline": true
         },
         {
-          "name": "App Version",
+          "name": "Version",
           "value": "'${APP_VERSION}'",
           "inline": true
         }
